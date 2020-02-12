@@ -281,6 +281,7 @@ func (rp *repoProxy) syncAppVersionInfo(ctx context.Context, appId string, versi
 			sender.OwnerPath(rp.repo.GetOwnerPath().GetValue()),
 		)
 
+		appVersion.CreateTime = versionInterface.GetCreateTime()
 		appVersion.PackageName = versionInterface.GetPackageName()
 		appVersion.Status = status
 		appVersion.Type = rp.repo.Type.GetValue()
