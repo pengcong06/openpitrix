@@ -57,6 +57,7 @@ const (
 	NotificationPort           = 9201
 	ServiceConfigPort          = 9202
 	ServicePushPort            = 9203
+	RuntimeHelmPort            = 9204
 )
 
 const (
