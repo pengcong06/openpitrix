@@ -49,6 +49,14 @@ const (
 	SearchWordColumnName = "search_word"
 )
 
+func getOrderByField(name string)string{
+	code := stringutil.FindString(constants.Columns,name)
+	if code == -1{
+		return constants.ColumnCreateTime
+	}
+	return name
+}
+
 func getSearchFilter(tableName string, value interface{}, exclude ...string) dbr.Builder {
 	if v, ok := value.(string); ok {
 		var ops []dbr.Builder
@@ -220,7 +228,7 @@ func addQueryOrderDir(query *db.SelectQuery, req Request, defaultColumn string, 
 	if r, ok := req.(RequestWithSortKey); ok {
 		s := r.GetSortKey()
 		if s != nil {
-			defaultColumn = s.GetValue()
+			defaultColumn = getOrderByField(s.GetValue())
 		}
 	}
 	if len(tableName) > 0 {
