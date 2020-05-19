@@ -19,3 +19,4 @@ bin/
 tmp/
 Justfile
 # pkg/service/helm/helm_test.go
+vendor/

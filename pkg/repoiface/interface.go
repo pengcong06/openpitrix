@@ -54,12 +54,12 @@ func New(ctx context.Context, repoType, url, credential string) (RepoInterface, 
 		if u.Scheme != constants.TypeHttp {
 			return nil, ErrSchemeNotMatched
 		}
-		return NewHttpInterface(ctx, u)
+		return NewHttpInterface(ctx, u, credential)
 	case constants.TypeHttps:
 		if u.Scheme != constants.TypeHttps {
 			return nil, ErrSchemeNotMatched
 		}
-		return NewHttpInterface(ctx, u)
+		return NewHttpInterface(ctx, u, credential)
 	default:
 		return nil, ErrInvalidType
 	}

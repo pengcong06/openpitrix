@@ -15,19 +15,21 @@ import (
 )
 
 type HttpInterface struct {
-	url *neturl.URL
+	url        *neturl.URL
+	credential string
 }
 
-func NewHttpInterface(ctx context.Context, url *neturl.URL) (*HttpInterface, error) {
+func NewHttpInterface(ctx context.Context, url *neturl.URL, credential string) (*HttpInterface, error) {
 	return &HttpInterface{
-		url: url,
+		url:        url,
+		credential: credential,
 	}, nil
 }
 
 func (i *HttpInterface) CheckFile(ctx context.Context, filename string) (bool, error) {
 	u := URLJoin(i.url.String(), filename)
 
-	resp, err := httputil.HttpGet(u)
+	resp, err := httputil.HttpGetWithCredential(u, i.credential)
 	if err != nil {
 		return false, err
 	}
@@ -43,7 +45,7 @@ func (i *HttpInterface) CheckFile(ctx context.Context, filename string) (bool, e
 func (i *HttpInterface) ReadFile(ctx context.Context, filename string) ([]byte, error) {
 	u := URLJoin(i.url.String(), filename)
 
-	resp, err := httputil.HttpGet(u)
+	resp, err := httputil.HttpGetWithCredential(u, i.credential)
 	if err != nil {
 		return nil, err
 	}
