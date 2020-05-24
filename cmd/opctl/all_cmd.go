@@ -2892,6 +2892,7 @@ func (c *CreateClusterCmd) ParseFlag(f Flag) {
 	f.StringSliceVarP(&c.AdvancedParam, "advanced_param", "", []string{}, "advanced param")
 	f.StringVarP(&c.AppID, "app_id", "", "", "required, id of app to run in cluster")
 	f.StringVarP(&c.Conf, "conf", "", "", "required, conf a json string, include cpu, memory info of cluster")
+	f.StringVarP(&c.Namespace, "namespace", "", "", "kubernetes namespace")
 	f.StringVarP(&c.RuntimeID, "runtime_id", "", "", "required, id of runtime")
 	f.StringVarP(&c.VersionID, "version_id", "", "", "required, id of app version")
 }
@@ -2931,6 +2932,7 @@ func (c *CreateDebugClusterCmd) ParseFlag(f Flag) {
 	f.StringSliceVarP(&c.AdvancedParam, "advanced_param", "", []string{}, "advanced param")
 	f.StringVarP(&c.AppID, "app_id", "", "", "required, id of app to run in cluster")
 	f.StringVarP(&c.Conf, "conf", "", "", "required, conf a json string, include cpu, memory info of cluster")
+	f.StringVarP(&c.Namespace, "namespace", "", "", "kubernetes namespace")
 	f.StringVarP(&c.RuntimeID, "runtime_id", "", "", "required, id of runtime")
 	f.StringVarP(&c.VersionID, "version_id", "", "", "required, id of app version")
 }

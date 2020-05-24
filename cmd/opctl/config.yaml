@@ -1224,6 +1224,9 @@
     conf:
       help: required, conf a json string, include cpu, memory info of cluster
       type: string
+    namespace:
+      help: kubernetes namespace
+      type: string
     runtime_id:
       help: required, id of runtime
       type: string
@@ -1243,6 +1246,9 @@
       type: string
     conf:
       help: required, conf a json string, include cpu, memory info of cluster
+      type: string
+    namespace:
+      help: kubernetes namespace
       type: string
     runtime_id:
       help: required, id of runtime

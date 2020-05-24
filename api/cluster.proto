@@ -68,6 +68,8 @@ message CreateClusterRequest {
 	google.protobuf.StringValue conf = 4;
 	// advanced param
 	repeated string advanced_param = 5;
+	// kubernetes namespace
+	google.protobuf.StringValue namespace = 6;
 }
 
 message CreateClusterResponse {

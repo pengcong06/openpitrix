@@ -9787,6 +9787,10 @@ var Files = map[string]string{
             "type": "string"
           },
           "title": "advanced param"
+        },
+        "namespace": {
+          "type": "string",
+          "title": "kubernetes namespace"
         }
       }
     },
