@@ -3241,8 +3241,7 @@ func (c *DescribeClustersCmd) ParseFlag(f Flag) {
 	f.StringSliceVarP(&c.VersionID, "version_id", "", []string{}, "version ids.")
 	c.WithDetail = new(bool)
 	f.BoolVarP(c.WithDetail, "with_detail", "", false, "get cluster detail info or not.")
-	c.Zone = new(string)
-	f.StringVarP(c.Zone, "zone", "", "", "namespace.")
+	f.StringSliceVarP(&c.Zone, "zone", "", []string{}, "namespace.")
 }
 
 func (c *DescribeClustersCmd) Run(out Out) error {
@@ -3353,8 +3352,7 @@ func (c *DescribeDebugClustersCmd) ParseFlag(f Flag) {
 	f.StringSliceVarP(&c.VersionID, "version_id", "", []string{}, "version ids.")
 	c.WithDetail = new(bool)
 	f.BoolVarP(c.WithDetail, "with_detail", "", false, "get cluster detail info or not.")
-	c.Zone = new(string)
-	f.StringVarP(c.Zone, "zone", "", "", "namespace.")
+	f.StringSliceVarP(&c.Zone, "zone", "", []string{}, "namespace.")
 }
 
 func (c *DescribeDebugClustersCmd) Run(out Out) error {

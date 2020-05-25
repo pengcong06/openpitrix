@@ -544,7 +544,7 @@ message DescribeClustersRequest {
 	// select column to display
 	repeated string display_columns = 17;
 	// namespace
-	google.protobuf.StringValue zone = 18;
+	repeated string zone = 18;
 }
 message DescribeClustersResponse {
 	// total count of qualified cluster

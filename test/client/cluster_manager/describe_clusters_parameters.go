@@ -152,7 +152,7 @@ type DescribeClustersParams struct {
 	  namespace.
 
 	*/
-	Zone *string
+	Zone []string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -380,13 +380,13 @@ func (o *DescribeClustersParams) SetWithDetail(withDetail *bool) {
 }
 
 // WithZone adds the zone to the describe clusters params
-func (o *DescribeClustersParams) WithZone(zone *string) *DescribeClustersParams {
+func (o *DescribeClustersParams) WithZone(zone []string) *DescribeClustersParams {
 	o.SetZone(zone)
 	return o
 }
 
 // SetZone adds the zone to the describe clusters params
-func (o *DescribeClustersParams) SetZone(zone *string) {
+func (o *DescribeClustersParams) SetZone(zone []string) {
 	o.Zone = zone
 }
 
@@ -606,20 +606,12 @@ func (o *DescribeClustersParams) WriteToRequest(r runtime.ClientRequest, reg str
 
 	}
 
-	if o.Zone != nil {
+	valuesZone := o.Zone
 
-		// query param zone
-		var qrZone string
-		if o.Zone != nil {
-			qrZone = *o.Zone
-		}
-		qZone := qrZone
-		if qZone != "" {
-			if err := r.SetQueryParam("zone", qZone); err != nil {
-				return err
-			}
-		}
-
+	joinedZone := swag.JoinByFormat(valuesZone, "multi")
+	// query array param zone
+	if err := r.SetQueryParam("zone", joinedZone...); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

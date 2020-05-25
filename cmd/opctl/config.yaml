@@ -1446,7 +1446,7 @@
       type: boolean
     zone:
       help: namespace.
-      type: string
+      type: '[]string'
 - action: DescribeDebugAppClusters
   request: DescribeDebugAppClustersRequest
   description: Get debug app clusters, can filter with these fields(cluster_id, app_id,
@@ -1549,7 +1549,7 @@
       type: boolean
     zone:
       help: namespace.
-      type: string
+      type: '[]string'
 - action: DescribeKeyPairs
   request: DescribeKeyPairsRequest
   description: Get key pairs, support filter with these fields(key_pair_id, name,
