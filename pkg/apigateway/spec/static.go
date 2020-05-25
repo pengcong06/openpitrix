@@ -3263,6 +3263,13 @@ var Files = map[string]string{
               "type": "string"
             },
             "collectionFormat": "multi"
+          },
+          {
+            "name": "zone",
+            "description": "namespace.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -4337,6 +4344,13 @@ var Files = map[string]string{
               "type": "string"
             },
             "collectionFormat": "multi"
+          },
+          {
+            "name": "zone",
+            "description": "namespace.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [

@@ -543,6 +543,8 @@ message DescribeClustersRequest {
 	google.protobuf.UInt32Value created_date = 16;
 	// select column to display
 	repeated string display_columns = 17;
+	// namespace
+	google.protobuf.StringValue zone = 18;
 }
 message DescribeClustersResponse {
 	// total count of qualified cluster
