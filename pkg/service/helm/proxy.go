@@ -743,3 +743,7 @@ func (proxy *Proxy) addPodsToClusterNodes(clusterNodes *map[string]*models.Clust
 		(*clusterNodes)[clusterNode.NodeId] = clusterNode
 	}
 }
+
+func (proxy *Proxy)DescribeWorkLoad(){
+	
+}

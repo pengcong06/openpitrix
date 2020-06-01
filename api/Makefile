@@ -34,11 +34,6 @@ generate: $(PROTO_FILES) Makefile
 	mkdir -p ../pkg/pb
 	rm -rf ../pkg/pb/*
 
-	make metadata_types
-	make metadata_drone
-	make metadata_frontgate
-	make metadata_pilot
-
 	protoc $(PROTOC_FLAGS) --go_out=plugins=grpc:../pkg/pb ${PROTO_FILES}
 	protoc $(PROTOC_FLAGS) --grpc-gateway_out=logtostderr=true,allow_delete_body=true:../pkg/pb ${PROTO_FILES}
 	protoc $(PROTOC_FLAGS) --swagger_out=logtostderr=true,allow_delete_body=true:../pkg/apigateway/spec ${PROTO_FILES}
@@ -53,32 +48,6 @@ generate: $(PROTO_FILES) Makefile
 	chown -R $${USER_ID}:$${GROUP_ID} ../pkg ../test
 #	# format generated files
 	goimports -l -w -e -local=openpitrix ../pkg/pb
-	@echo "ok"
-
-metadata_types: ${METADATA_TYPES_PBFILES}
-	mkdir -p $(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/types
-	rm -rf   $(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/types/*
-	protoc $(PROTOC_FLAGS) --go_out=$(GOPATH)/src ${METADATA_TYPES_PBFILES}
-	ls $(PWD)/../build/replace
-	go run $(PWD)/../build/replace/main.go -old=,omitempty -new= -dir=$(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/types
-	@echo "ok"
-
-metadata_drone: ${METADATA_DRONE_PBFILES}
-	mkdir -p $(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/drone
-	rm -rf   $(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/drone/*
-	protoc $(PROTOC_FLAGS) --go_out=plugins=grpc:$(GOPATH)/src ${METADATA_DRONE_PBFILES}
-	@echo "ok"
-
-metadata_frontgate: ${METADATA_FRONTGATE_PBFILES}
-	mkdir -p $(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/frontgate
-	rm -rf   $(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/frontgate/*
-	protoc $(PROTOC_FLAGS) --stdrpc_out=$(GOPATH)/src ${METADATA_FRONTGATE_PBFILES}
-	@echo "ok"
-
-metadata_pilot: ${METADATA_PILOT_PBFILES}
-	mkdir -p $(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/pilot
-	rm -rf   $(GOPATH)/src/openpitrix.io/openpitrix/pkg/pb/metadata/pilot/*
-	protoc $(PROTOC_FLAGS) --go_out=plugins=grpc:$(GOPATH)/src ${METADATA_PILOT_PBFILES}
 	@echo "ok"
 
 tools:

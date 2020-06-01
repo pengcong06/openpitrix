@@ -11,15 +11,11 @@ import (
 	"openpitrix.io/openpitrix/pkg/service/app"
 	"openpitrix.io/openpitrix/pkg/service/attachment"
 	"openpitrix.io/openpitrix/pkg/service/category"
-	"openpitrix.io/openpitrix/pkg/service/cluster"
 	"openpitrix.io/openpitrix/pkg/service/helm"
 	"openpitrix.io/openpitrix/pkg/service/isv"
-	"openpitrix.io/openpitrix/pkg/service/job"
 	"openpitrix.io/openpitrix/pkg/service/repo"
 	"openpitrix.io/openpitrix/pkg/service/repo_indexer"
 	"openpitrix.io/openpitrix/pkg/service/runtime"
-	"openpitrix.io/openpitrix/pkg/service/runtime_provider"
-	"openpitrix.io/openpitrix/pkg/service/task"
 )
 
 func getConf(database string) *config.Config {
@@ -30,16 +26,12 @@ func getConf(database string) *config.Config {
 
 func main() {
 	go category.Serve(getConf("app"))
-	go cluster.Serve(getConf("cluster"))
 	go isv.Serve(getConf("isv"))
-	go job.Serve(getConf("job"))
 	go repo_indexer.Serve(getConf("repo"))
 	go repo.Serve(getConf("repo"))
 	go runtime.Serve(getConf("runtime"))
-	go task.Serve(getConf("task"))
 	go app.Serve(getConf("app"))
 	go attachment.Serve(getConf("attachment"))
-	go runtime_provider.Serve(getConf(""))
 	go helm.Serve(getConf(""))
 	//todo replace helm.Serve
 	go helm.HelmServe(getConf(""))

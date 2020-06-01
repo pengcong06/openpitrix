@@ -7,6 +7,7 @@ FROM openpitrix/flyway:alpine
 USER root
 RUN apk add --no-cache mysql-client
 
-COPY ./schema /flyway/sql
+COPY ./schema /flyway/sql/schema
 COPY ./ddl /flyway/sql/ddl
 COPY ./scripts /flyway/sql/ddl
+

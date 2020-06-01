@@ -260,24 +260,11 @@ var IndexedColumns = map[string][]string{
 	TableRepoEvent: {
 		ColumnRepoEventId, ColumnRepoId, ColumnStatus, ColumnOwner,
 	},
-	TableCluster: {
-		ColumnClusterId, ColumnAppId, ColumnVersionId, ColumnStatus,
-		ColumnRuntimeId, ColumnFrontgateId, ColumnOwner, ColumnClusterType,
-	},
-	TableKeyPair: {
-		ColumnKeyPairId, ColumnName, ColumnOwner,
-	},
-	TableClusterNode: {
-		ColumnClusterId, ColumnNodeId, ColumnStatus, ColumnOwner,
-	},
 	TableCategory: {
 		ColumnCategoryId, ColumnStatus, ColumnLocale, ColumnOwner, ColumnName,
 	},
 	TableMarket: {
 		ColumnMarketId, ColumnName, ColumnVisibility, ColumnStatus, ColumnOwner,
-	},
-	TableMarketUser: {
-		ColumnMarketId, ColumnUserId,
 	},
 	TableAppVersionAudit: {
 		ColumnVersionId, ColumnAppId, ColumnStatus, ColumnOperator, ColumnRole,
@@ -299,8 +286,6 @@ var SearchWordColumnTable = []string{
 	TableRepo,
 	TableJob,
 	TableTask,
-	TableCluster,
-	TableClusterNode,
 	TableCategory,
 	TableVendorVerifyInfo,
 }
@@ -333,12 +318,6 @@ var SearchColumns = map[string][]string{
 	},
 	TableRuntimeCredential: {
 		ColumnRuntimeCredentialId, ColumnName, ColumnOwner, ColumnProvider,
-	},
-	TableCluster: {
-		ColumnClusterId, ColumnName, ColumnOwner, ColumnAppId, ColumnVersionId, ColumnRuntimeId,
-	},
-	TableClusterNode: {
-		ColumnNodeId, ColumnClusterId, ColumnName, ColumnInstanceId, ColumnVolumeId, ColumnPrivateIp, ColumnRole, ColumnOwner,
 	},
 	TableRepo: {
 		ColumnName, ColumnDescription,

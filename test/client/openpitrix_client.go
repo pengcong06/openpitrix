@@ -16,16 +16,12 @@ import (
 	"openpitrix.io/openpitrix/test/client/app_manager"
 	"openpitrix.io/openpitrix/test/client/attachment_service"
 	"openpitrix.io/openpitrix/test/client/category_manager"
-	"openpitrix.io/openpitrix/test/client/cluster_manager"
 	"openpitrix.io/openpitrix/test/client/isv_manager"
-	"openpitrix.io/openpitrix/test/client/job_manager"
-	"openpitrix.io/openpitrix/test/client/market_manager"
 	"openpitrix.io/openpitrix/test/client/release_manager"
 	"openpitrix.io/openpitrix/test/client/repo_indexer"
 	"openpitrix.io/openpitrix/test/client/repo_manager"
 	"openpitrix.io/openpitrix/test/client/runtime_manager"
 	"openpitrix.io/openpitrix/test/client/service_config"
-	"openpitrix.io/openpitrix/test/client/task_manager"
 	"openpitrix.io/openpitrix/test/client/token_manager"
 )
 
@@ -80,13 +76,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Openpitrix
 
 	cli.CategoryManager = category_manager.New(transport, formats)
 
-	cli.ClusterManager = cluster_manager.New(transport, formats)
-
 	cli.IsvManager = isv_manager.New(transport, formats)
-
-	cli.JobManager = job_manager.New(transport, formats)
-
-	cli.MarketManager = market_manager.New(transport, formats)
 
 	cli.ReleaseManager = release_manager.New(transport, formats)
 
@@ -97,8 +87,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Openpitrix
 	cli.RuntimeManager = runtime_manager.New(transport, formats)
 
 	cli.ServiceConfig = service_config.New(transport, formats)
-
-	cli.TaskManager = task_manager.New(transport, formats)
 
 	cli.TokenManager = token_manager.New(transport, formats)
 
@@ -156,13 +144,7 @@ type Openpitrix struct {
 
 	CategoryManager *category_manager.Client
 
-	ClusterManager *cluster_manager.Client
-
 	IsvManager *isv_manager.Client
-
-	JobManager *job_manager.Client
-
-	MarketManager *market_manager.Client
 
 	ReleaseManager *release_manager.Client
 
@@ -173,8 +155,6 @@ type Openpitrix struct {
 	RuntimeManager *runtime_manager.Client
 
 	ServiceConfig *service_config.Client
-
-	TaskManager *task_manager.Client
 
 	TokenManager *token_manager.Client
 
@@ -195,13 +175,7 @@ func (c *Openpitrix) SetTransport(transport runtime.ClientTransport) {
 
 	c.CategoryManager.SetTransport(transport)
 
-	c.ClusterManager.SetTransport(transport)
-
 	c.IsvManager.SetTransport(transport)
-
-	c.JobManager.SetTransport(transport)
-
-	c.MarketManager.SetTransport(transport)
 
 	c.ReleaseManager.SetTransport(transport)
 
@@ -212,8 +186,6 @@ func (c *Openpitrix) SetTransport(transport runtime.ClientTransport) {
 	c.RuntimeManager.SetTransport(transport)
 
 	c.ServiceConfig.SetTransport(transport)
-
-	c.TaskManager.SetTransport(transport)
 
 	c.TokenManager.SetTransport(transport)
 

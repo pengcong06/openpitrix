@@ -104,19 +104,19 @@ message DeleteReleaseResponse{
 service ReleaseManager{
     rpc ListReleases(ListReleasesRequest) returns (ListReleaseResponse){
         option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
-        summary: "List releases"
-            };
-            option (google.api.http) = {
-                get: "/v1/releases"
-            };
-    }
-    rpc DescribeRelease(DescribeReleaseRequest) returns (DescribeReleaseResponse){
-        option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
-        summary: "Describe release"
-            };
+            summary: "List releases"
+        };
         option (google.api.http) = {
-                get: "/v1/release"
-            };
+            get: "/v1/releases"
+        };
+    }
+    rpc DescribeRelease(DescribeReleaseRequest) returns (DescribeReleaseResponse) {
+        option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+            summary: "Describe release"
+        };
+        option (google.api.http) = {
+            get: "/v1/release"
+        };
     }
     rpc CreateRelease(CreateReleaseRequest) returns (CreateReleaseResponse) {
         option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {

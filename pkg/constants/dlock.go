@@ -6,5 +6,4 @@ package constants
 
 const (
 	RepoIndexPrefix = "repo_index_"
-	ClusterPrefix   = "cluster_"
 )

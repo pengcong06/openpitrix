@@ -159,10 +159,6 @@ const (
 const (
 	ProviderQingCloud   = "qingcloud"
 	ProviderKubernetes  = "kubernetes"
-	ProviderAWS         = "aws"
-	ProviderAliyun      = "aliyun"
-	ProviderTypeVmbased = "vmbased"
-	TargetPilot         = "pilot"
 )
 
 const (
