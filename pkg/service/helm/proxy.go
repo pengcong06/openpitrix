@@ -195,8 +195,8 @@ func (proxy *Proxy) InstallReleaseFromChart(cfg *action.Configuration, c *chart.
 	installCli := action.NewInstall(cfg)
 	installCli.ReleaseName = releaseName
 	rls, err := installCli.Run(c, rawVals)
-	fmt.Println("----------------", err.Error())
 	if err != nil {
+		fmt.Println("----------------", err.Error())
 		if rls != nil {
 			fmt.Println("----------------", rls)
 			errDelete := proxy.DeleteRelease(cfg, rls.Name, true)
